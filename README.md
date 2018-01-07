@@ -22,8 +22,8 @@ This project is still in early development, and does not yet have a full test su
 
 Given the following directory structure:
     
-    project/
-        project.py
+    someproject/
+        someproject.py
         templates/
             base.html
             index.html
@@ -37,7 +37,7 @@ Given the following directory structure:
                 
 Assume `base.html` is a base template used by the other two templates, and all templates are valid jinja2 templates.
 
-The following code will generate a site from these files using the default settings:
+The following code in `someproject.py` would generate a site from these files using the default settings:
 
     from simplesite import Page, SimpleStaticSiteGenerator
     
@@ -51,8 +51,8 @@ The following code will generate a site from these files using the default setti
     
 The result would be the following:
 
-    project/
-        project.py
+    someproject/
+        someproject.py
         templates/
             [...]
         static/
