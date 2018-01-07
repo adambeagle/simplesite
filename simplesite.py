@@ -10,7 +10,7 @@ minimization, etc.
 See README.md for more information and API.
 """
 from os import makedirs
-from os.path import dirname, exists, join, normpath, splitext
+from os.path import basename, dirname, exists, join, normpath, splitext
 from shutil import copy2, copytree, ignore_patterns, rmtree
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
@@ -192,14 +192,17 @@ class SimpleStaticSiteGenerator:
         if exists(static_output_path):
             rmtree(static_output_path)
         
+        # Copy all static files, except those specified in static_map, 
+        # retaining directory structure.
         copytree(
             self._static_root, 
             static_output_path, 
-            ignore=ignore_patterns(*self.static_map.keys())
+            ignore=ignore_patterns(
+                *[basename(key) for key in self.static_map.keys()]
+            )
         )
         
         for srcfile, relative_dest in self.static_map.items():
             src = normpath(join(self._static_root, srcfile))
             dest = normpath(join(static_output_path, relative_dest))
             copy2(src, dest)
-        
