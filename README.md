@@ -43,6 +43,8 @@ The following code in `someproject.py` would generate a site from these files us
 from simplesite import Page, SimpleStaticSiteGenerator
 
 pages = (
+    # Note these filenames are relative to the root template path, which is
+    # 'templates/' by default but can be changed
     Page('index.html'),
     Page('example.html'),
 )
@@ -87,7 +89,9 @@ A single web page is represented by a `Page` object (or an object which subclass
 
 #### Constructor 
 
-`Page(filename, output_path='', output_filename=None, **context)`
+```python
+Page(filename, output_path='', output_filename=None, **context)
+```
 
 * `filename` is the filename (possibly including path) to the template file. It is passed to jinja2's `Environment.get_template()` method as `name`.
 
