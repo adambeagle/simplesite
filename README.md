@@ -70,6 +70,9 @@ The result would be the following:
                     
 The resulting site is placed in `output/`. The static files are copied in their existing directory structure into the output folder.
 
+## Example
+
+To view an example site which uses this package, see the [landonhotel repository](https://github.com/adambeagle/landonhotel).
 
 ## API
 
