@@ -1,0 +1,5 @@
+Jinja2==2.10
+libsass==0.13.4
+MarkupSafe==1.0
+six==1.11.0
+webassets==0.12.1
