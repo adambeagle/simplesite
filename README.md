@@ -39,16 +39,19 @@ Assume `base.html` is a base template used by the other two templates, and all t
 
 The following code in `someproject.py` would generate a site from these files using the default settings:
 
-    from simplesite import Page, SimpleStaticSiteGenerator
-    
-    pages = (
-        Page('index.html'),
-        Page('example.html'),
-    )
-    
-    sitegen = SimpleStaticSiteGenerator(pages=pages, static_map={'images/favicon.ico': '../'})
-    sitegen.output_site()
-    
+```python
+from simplesite import Page, SimpleStaticSiteGenerator
+
+pages = (
+    Page('index.html'),
+    Page('example.html'),
+)
+
+
+sitegen = SimpleStaticSiteGenerator(pages=pages, static_map={'images/favicon.ico': '../'})
+sitegen.output_site()
+```
+
 The result would be the following:
 
     someproject/
@@ -128,15 +131,17 @@ This class is the primary helper class of the module, which represents a site an
 
 #### Constructor
 
-    SimpleStaticSiteGenerator(
-      pages=None, 
-      template_path=DEFAULT_TEMPLATE_PATH,
-      output_path=DEFAULT_OUTPUT_PATH, 
-      static_root=DEFAULT_STATIC_ROOT,
-      static_output_root=None, # defaults to static_root if not set
-      static_map=None
-    )
-    
+```python
+SimpleStaticSiteGenerator(
+  pages=None, 
+  template_path=DEFAULT_TEMPLATE_PATH,
+  output_path=DEFAULT_OUTPUT_PATH, 
+  static_root=DEFAULT_STATIC_ROOT,
+  static_output_root=None, # defaults to static_root if not set
+  static_map=None
+)
+```
+
 * `pages` is a container of objects which are instances of `Page`
 
 * `template_path` is sent to jinja2's `FileSystemLoader` to search for templates. Defaults to `'templates/'`.
