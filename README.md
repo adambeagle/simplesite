@@ -13,6 +13,11 @@ This project is still in early development, and does not yet have a full test su
 * python 3.x
 * Packages as defined in `requirements.txt` (`pip install -r requirements.txt`)
 
+## Installation
+
+1. Clone this repository (`git clone https://github.com/adambeagle/simplesite.git`)
+2. Navigate to the `simplesite` directory git created and install the package with pip (`pip install . -r requirements.txt`)
+
 ## Quickstart
 
 Given the following directory structure:
@@ -20,14 +25,14 @@ Given the following directory structure:
     project/
         project.py
         templates/
-        	base.html
+            base.html
             index.html
             example.html
         static/
             css/
-            	style.css
+                style.css
             images/
-            	x.jpg
+                x.jpg
                 favicon.ico
                 
 Assume `base.html` is a base template used by the other two templates, and all templates are valid jinja2 templates.
@@ -37,7 +42,7 @@ The following code will generate a site from these files using the default setti
     from simplesite import Page, SimpleStaticSiteGenerator
     
     pages = (
-    	Page('index.html'),
+        Page('index.html'),
         Page('example.html'),
     )
     
@@ -46,10 +51,10 @@ The following code will generate a site from these files using the default setti
     
 The result would be the following:
 
-	project/
+    project/
         project.py
         templates/
-        	[...]
+            [...]
         static/
             [...]
         output/
@@ -60,7 +65,7 @@ The result would be the following:
                 css/
                     style.css
                 images/
-                	x.jpg
+                    x.jpg
                     
                     
 The resulting site is placed in `output/`. The static files are copied in their existing directory structure into the output folder.
