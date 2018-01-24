@@ -9,6 +9,7 @@ minimization, etc.
 
 See README.md for more information and API.
 """
+
 from os import makedirs
 from os.path import basename, dirname, exists, join, normpath, splitext
 from shutil import copy2, copytree, ignore_patterns, rmtree
@@ -151,7 +152,9 @@ class SimpleStaticSiteGenerator:
         self._output_path = output_path if output_path else ''
         self._static_root = static_root if static_root else ''
         
-        if static_output_root:
+        # Note static_output_root *can* be empty, to permit copying static files
+        # to root output directory
+        if static_output_root or static_output_root == '':
             self._static_output_root = static_output_root
         else:
             self._static_output_root = self._static_root
@@ -171,19 +174,21 @@ class SimpleStaticSiteGenerator:
             
         self.pages = pages
         self.static_map = static_map
-        
+
     def output_site(self):
         """
         Render and write the site, as determined by the pages and path
         properties of the instance.
         """
-        # Render and output pages
-        self._renderer.render(self.pages)
-        
         # Copy static files
-        # Can assume output_path exists because created in renderer
+        # Note this is destructive. This call should always happen first
+        # to prevent rendered pages being deleted in the event
+        # static_output_root and output_path are the same.
         self._copy_static()
         
+        # Render and output pages
+        self._renderer.render(self.pages)
+
     def _copy_static(self):
         static_output_path = join(self._output_path, self._static_output_root)
         

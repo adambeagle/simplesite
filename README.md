@@ -154,7 +154,7 @@ SimpleStaticSiteGenerator(
 
 * `static_root` is the path to where development static files are stored. Defaults to `'static/'`. 
 
-* `static_output_root` is the root directory at which to save static files in output. Defaults to `static_root`.
+* `static_output_root` is the root directory at which to save static files in output. Defaults to `static_root`. Note there is a distinction between setting this to an empty string &mdash; which would result in static files being copied into the root output directory &mdash; and setting it to any other false-equivalent value, which would cause the default to be used.
 
 * `static_map` is a mapping (assumed to be a dictionary) of specific static files and their desired destination in the output, relative to `static_output_root`. By default, static files are copied in their existing directory structure. Use this parameter to move or rename specific files.
 
