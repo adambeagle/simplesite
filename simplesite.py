@@ -175,6 +175,10 @@ class SimpleStaticSiteGenerator:
         self.pages = pages
         self.static_map = static_map
 
+    @property
+    def output_path(self):
+        return self._output_path
+
     def output_site(self):
         """
         Render and write the site, as determined by the pages and path

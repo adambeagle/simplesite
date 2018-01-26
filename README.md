@@ -1,4 +1,4 @@
-# simplesite v0.1
+# simplesite v0.1.1
 
 *Author: Adam Beagle*
 
@@ -165,6 +165,10 @@ SimpleStaticSiteGenerator(
 Renders and writes the site, as determined by the pages and path properties of the instance.
 
 #### Properties
+
+* `output_path`
+
+    Read-only copy of computed `output_path`.
 
 * `pages`
 
